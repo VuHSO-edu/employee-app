@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 //AUTHOR:VuHSO
@@ -54,6 +55,14 @@ public class AttendanceServiceImpl implements AttendanceService {
         return AttendanceMapper.map(attendances);
     }
 
-
+    @Override
+    public List<AttendanceDto> findByEmployeeIdAndCheckinTimeBetween(Long employeeId, YearMonth month) {
+        LocalDate startDate = month.atDay(1);
+        LocalDate endDate = month.atEndOfMonth();
+        return attendanceRepository.findByEmployeeIdAAndCheckinTimeBetween(employeeId, startDate.atStartOfDay(), endDate.atTime(23, 59, 59))
+                .stream()
+                .map(AttendanceMapper::map)
+                .toList();
+    }
 }
 

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 //AUTHOR:VuHSO
@@ -43,4 +44,7 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
             "HAVING MIN(HOUR(a.checkinTime) * 60 + MINUTE(a.checkinTime)) > 9 * 60 " +
             "AND MAX(HOUR(a.checkoutTime) * 60 + MINUTE(a.checkoutTime)) < 17 * 60 + 30)")
     List<Employee> findLateEmployees();
+
+
+    List<Attendance> findByEmployeeIdAAndCheckinTimeBetween(Long id, LocalDateTime startDate, LocalDateTime endDate);
 }

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 //AUTHOR:VuHSO
 //                           _
@@ -65,6 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         var employee = employeeRepository.findById(id).get();
         return EmployeeMapper.map(employee);
     }
+
 
     @Override
     public void deleteById(Long id) {

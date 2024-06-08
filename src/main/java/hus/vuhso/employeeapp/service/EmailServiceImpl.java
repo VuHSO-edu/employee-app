@@ -1,5 +1,10 @@
 package hus.vuhso.employeeapp.service;
 
+import lombok.AllArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
 //AUTHOR:VuHSO
 //                           _
 //                        _ooOoo_
@@ -21,29 +26,17 @@ package hus.vuhso.employeeapp.service;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
+@Service
+@AllArgsConstructor
+public class EmailServiceImpl implements EmailService {
+    private JavaMailSender javaMailSender;
 
-import hus.vuhso.employeeapp.dto.EmployeeDto;
-import hus.vuhso.employeeapp.form.EmployeeCreateForm;
-import hus.vuhso.employeeapp.form.EmployeeUpdateForm;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
-import java.util.Optional;
-
-public interface EmployeeService {
-    EmployeeDto create(EmployeeCreateForm form);
-
-    EmployeeDto findById(Long id);
-
-
-    void deleteById(Long id);
-
-    List<EmployeeDto> findAll();
-
-    EmployeeDto update(EmployeeUpdateForm form, Long id);
-
-    public void saveAll(List<EmployeeDto> employees);
-
-    List<EmployeeDto> findLateEmployees();
+    @Override
+    public void sendEmail(String to, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+        javaMailSender.send(message);
+    }
 }

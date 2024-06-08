@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 public interface AttendanceService {
@@ -15,5 +16,5 @@ public interface AttendanceService {
 
     List<AttendanceDto> findByEmployeeId(Long employeeId);
 
-
+    List<AttendanceDto> findByEmployeeIdAndCheckinTimeBetween(Long employeeId, YearMonth month);
 }
