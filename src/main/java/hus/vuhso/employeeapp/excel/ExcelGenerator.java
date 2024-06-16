@@ -1,7 +1,6 @@
 package hus.vuhso.employeeapp.excel;
 
-import hus.vuhso.employeeapp.dto.EmployeeDto;
-import hus.vuhso.employeeapp.entity.Employee;
+import hus.vuhso.employeeapp.dto.response.EmployeeDto;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;

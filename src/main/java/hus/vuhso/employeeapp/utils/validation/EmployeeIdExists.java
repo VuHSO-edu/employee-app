@@ -1,4 +1,9 @@
-package hus.vuhso.employeeapp.entity;
+package hus.vuhso.employeeapp.utils.validation;
+
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+import java.lang.annotation.*;
 
 //AUTHOR:VuHSO
 //                           _
@@ -21,32 +26,14 @@ package hus.vuhso.employeeapp.entity;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
+@Documented
+@Constraint(validatedBy = EmploeeIdExistsValidator.class)
+@Target(ElementType.PARAMETER)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface EmployeeIdExists {
+    String message() default "{emploee.id.Exists.message}";
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
+    Class<?>[] groups() default {};
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
-@Entity
-@Table(name = "attendance")
-@Getter
-@Setter
-public class Attendance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
-
-    private Date checkinTime;
-    private Date checkoutTime;
-
-    @CreationTimestamp
-    private Date date;
-
+    Class<? extends Payload>[] payload() default {};
 }

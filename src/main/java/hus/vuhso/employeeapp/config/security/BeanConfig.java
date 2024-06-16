@@ -1,8 +1,9 @@
-package hus.vuhso.employeeapp.dto;
+package hus.vuhso.employeeapp.config.security;
 
-import hus.vuhso.employeeapp.entity.Employee;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 //AUTHOR:VuHSO
 //                           _
@@ -25,11 +26,10 @@ import lombok.Setter;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
-@Getter
-@Setter
-public class UserDto {
-    private Long id;
-    private String username;
-    private String password;
-    private Employee employee;
+@Configuration
+public class BeanConfig {
+    @Bean
+     public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 }

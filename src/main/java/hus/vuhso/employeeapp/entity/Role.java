@@ -1,12 +1,12 @@
-package hus.vuhso.employeeapp.form;
+package hus.vuhso.employeeapp.entity;
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 //AUTHOR:VuHSO
 //                           _
@@ -31,10 +31,27 @@ import java.util.Date;
 //=========== Phật phù hộ không bao giờ BUG ===================
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class EmployeeCreateForm {
-    private String name;
-    private LocalDate dateOfBirth;
-    private String email;
+@Entity
+@Table(name = "role")
+public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "type", length = 10, nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private Type type;
+
+    @Column(name = "created_at",updatable = false ,nullable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at",nullable = false)
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
+    public enum Type {
+        ADMIN, EMPLOYEE
+    }
+
 }

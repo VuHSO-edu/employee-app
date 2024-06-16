@@ -1,10 +1,12 @@
-package hus.vuhso.employeeapp.dto;
+package hus.vuhso.employeeapp.service;
 
-import hus.vuhso.employeeapp.entity.Employee;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
+import java.io.IOException;
 
 //AUTHOR:VuHSO
 //                           _
@@ -27,12 +29,9 @@ import java.util.Date;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
-@Getter
-@Setter
-public class AttendanceDto {
-    private Long id;
-    private Employee employee;
-    private Date checkinTime;
-    private Date checkoutTime;
-    private Date date;
+public interface ExcelService {
+    ResponseEntity<InputStreamResource> exportLateEmployees() throws IOException;
+    ResponseEntity<String> importEmployees(@RequestParam("file") MultipartFile file);
+    ResponseEntity<Resource> exportEmployees();
+
 }

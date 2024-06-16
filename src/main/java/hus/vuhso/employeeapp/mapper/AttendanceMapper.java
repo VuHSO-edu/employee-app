@@ -1,9 +1,8 @@
 package hus.vuhso.employeeapp.mapper;
 
-import hus.vuhso.employeeapp.dto.AttendanceDto;
+import hus.vuhso.employeeapp.dto.response.AttendanceDto;
 import hus.vuhso.employeeapp.entity.Attendance;
-import hus.vuhso.employeeapp.entity.Employee;
-import hus.vuhso.employeeapp.form.AttendanceCreateForm;
+import hus.vuhso.employeeapp.dto.request.AttendanceCreateForm;
 
 import java.util.List;
 

@@ -1,8 +1,6 @@
-package hus.vuhso.employeeapp.dto;
+package hus.vuhso.employeeapp.dto.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -31,10 +29,7 @@ import java.util.Date;
 //=========== Phật phù hộ không bao giờ BUG ===================
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class EmployeeDto {
-    private Long id;
+public class EmployeeUpdateForm {
     private String name;
     private LocalDate dateOfBirth;
     private String email;

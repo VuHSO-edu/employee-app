@@ -1,15 +1,11 @@
-package hus.vuhso.employeeapp.service;
+package hus.vuhso.employeeapp.service.serviceImpl;
 
-import hus.vuhso.employeeapp.dto.AttendanceDto;
-import hus.vuhso.employeeapp.dto.EmployeeDto;
-import hus.vuhso.employeeapp.entity.Attendance;
-import hus.vuhso.employeeapp.form.AttendanceCreateForm;
+import hus.vuhso.employeeapp.dto.response.AttendanceDto;
+import hus.vuhso.employeeapp.dto.request.AttendanceCreateForm;
 import hus.vuhso.employeeapp.mapper.AttendanceMapper;
-import hus.vuhso.employeeapp.mapper.EmployeeMapper;
 import hus.vuhso.employeeapp.repository.AttendanceRepository;
+import hus.vuhso.employeeapp.service.AttendanceService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

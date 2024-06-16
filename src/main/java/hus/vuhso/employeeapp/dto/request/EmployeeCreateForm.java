@@ -1,11 +1,12 @@
-package hus.vuhso.employeeapp.service;
+package hus.vuhso.employeeapp.dto.request;
 
-import hus.vuhso.employeeapp.dto.UserDto;
-import hus.vuhso.employeeapp.form.UserCreateForm;
-import hus.vuhso.employeeapp.mapper.UserMapper;
-import hus.vuhso.employeeapp.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 //AUTHOR:VuHSO
 //                           _
@@ -28,26 +29,12 @@ import org.springframework.stereotype.Service;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
-@Service
+@Getter
+@Setter
 @AllArgsConstructor
-public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
-
-    @Override
-    public UserDto createUser(UserCreateForm form) {
-        var user = UserMapper.map(form);
-        var save = userRepository.save(user);
-        return UserMapper.map(save);
-    }
-
-    @Override
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
-
-    @Override
-    public UserDto findByUsername(String username) {
-        var user = userRepository.findByUsername(username);
-        return UserMapper.map(user);
-    }
+@NoArgsConstructor
+public class EmployeeCreateForm {
+    private String name;
+    private LocalDate dateOfBirth;
+    private String email;
 }

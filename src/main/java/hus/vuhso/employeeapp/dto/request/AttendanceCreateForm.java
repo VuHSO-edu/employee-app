@@ -1,4 +1,10 @@
-package hus.vuhso.employeeapp.entity;
+package hus.vuhso.employeeapp.dto.request;
+
+import hus.vuhso.employeeapp.entity.Employee;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Date;
 
 //AUTHOR:VuHSO
 //                           _
@@ -21,32 +27,10 @@ package hus.vuhso.employeeapp.entity;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
-
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDateTime;
-import java.util.Date;
-
-@Entity
-@Table(name = "attendance")
 @Getter
 @Setter
-public class Attendance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+public class AttendanceCreateForm {
 
     private Date checkinTime;
     private Date checkoutTime;
-
-    @CreationTimestamp
-    private Date date;
-
 }

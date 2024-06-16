@@ -1,11 +1,9 @@
 package hus.vuhso.employeeapp.mapper;
 
-import hus.vuhso.employeeapp.dto.EmployeeDto;
+import hus.vuhso.employeeapp.dto.response.EmployeeDto;
 import hus.vuhso.employeeapp.entity.Employee;
-import hus.vuhso.employeeapp.form.EmployeeCreateForm;
-import hus.vuhso.employeeapp.form.EmployeeUpdateForm;
-
-import java.util.Optional;
+import hus.vuhso.employeeapp.dto.request.EmployeeCreateForm;
+import hus.vuhso.employeeapp.dto.request.EmployeeUpdateForm;
 
 //AUTHOR:VuHSO
 //                           _

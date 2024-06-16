@@ -22,14 +22,15 @@ package hus.vuhso.employeeapp.service;
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
 
-import hus.vuhso.employeeapp.dto.EmployeeDto;
-import hus.vuhso.employeeapp.form.EmployeeCreateForm;
-import hus.vuhso.employeeapp.form.EmployeeUpdateForm;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import hus.vuhso.employeeapp.dto.response.EmployeeDto;
+import hus.vuhso.employeeapp.dto.request.EmployeeCreateForm;
+import hus.vuhso.employeeapp.dto.request.EmployeeUpdateForm;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface EmployeeService {
     EmployeeDto create(EmployeeCreateForm form);
@@ -46,4 +47,5 @@ public interface EmployeeService {
     public void saveAll(List<EmployeeDto> employees);
 
     List<EmployeeDto> findLateEmployees();
+
 }

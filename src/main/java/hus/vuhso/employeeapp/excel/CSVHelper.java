@@ -3,7 +3,7 @@ package hus.vuhso.employeeapp.excel;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
-import hus.vuhso.employeeapp.dto.EmployeeDto;
+import hus.vuhso.employeeapp.dto.response.EmployeeDto;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;

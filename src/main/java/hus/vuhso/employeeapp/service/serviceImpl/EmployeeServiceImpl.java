@@ -1,20 +1,16 @@
-package hus.vuhso.employeeapp.service;
+package hus.vuhso.employeeapp.service.serviceImpl;
 
-import hus.vuhso.employeeapp.dto.EmployeeDto;
-import hus.vuhso.employeeapp.form.EmployeeCreateForm;
-import hus.vuhso.employeeapp.form.EmployeeUpdateForm;
+import hus.vuhso.employeeapp.dto.response.EmployeeDto;
+import hus.vuhso.employeeapp.dto.request.EmployeeCreateForm;
+import hus.vuhso.employeeapp.dto.request.EmployeeUpdateForm;
 import hus.vuhso.employeeapp.mapper.EmployeeMapper;
 import hus.vuhso.employeeapp.repository.AttendanceRepository;
 import hus.vuhso.employeeapp.repository.EmployeeRepository;
-import jakarta.validation.constraints.Null;
+import hus.vuhso.employeeapp.service.EmployeeService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 //AUTHOR:VuHSO
 //                           _
@@ -39,7 +35,7 @@ import java.util.Optional;
 //=========== Phật phù hộ không bao giờ BUG ===================
 @Service
 @AllArgsConstructor
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
 
     private AttendanceRepository attendanceRepository;
@@ -93,4 +89,6 @@ public class EmployeeServiceImpl implements EmployeeService{
                 .map(EmployeeMapper::map)
                 .toList();
     }
+
+
 }

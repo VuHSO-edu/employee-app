@@ -23,6 +23,10 @@ package hus.vuhso.employeeapp.entity;
 //=========== Phật phù hộ không bao giờ BUG ===================
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,14 +43,21 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is mandatory")
     private String name;
+
+    @NotNull(message = "Date of Birth is mandatory")
+    @Past(message = "Date of Birth must be in the past")
     private LocalDate dateOfBirth;
+
+    @Email(message = "Email should be valid")
+    @NotBlank(message = "Email is mandatory")
     private String email;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Attendance> attendances;
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
 }

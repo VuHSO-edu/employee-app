@@ -1,9 +1,7 @@
-package hus.vuhso.employeeapp.service;
+package hus.vuhso.employeeapp.repository;
 
-import lombok.AllArgsConstructor;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
+import hus.vuhso.employeeapp.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 //AUTHOR:VuHSO
 //                           _
@@ -26,17 +24,6 @@ import org.springframework.stereotype.Service;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
-@Service
-@AllArgsConstructor
-public class EmailServiceImpl implements EmailService {
-    private JavaMailSender javaMailSender;
-
-    @Override
-    public void sendEmail(String to, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
-        javaMailSender.send(message);
-    }
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findByType(Role.Type type);
 }

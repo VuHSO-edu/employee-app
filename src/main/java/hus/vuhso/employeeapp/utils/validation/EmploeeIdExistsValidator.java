@@ -1,10 +1,9 @@
-package hus.vuhso.employeeapp.form;
+package hus.vuhso.employeeapp.utils.validation;
 
-import hus.vuhso.employeeapp.entity.Employee;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Date;
+import hus.vuhso.employeeapp.repository.EmployeeRepository;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import lombok.AllArgsConstructor;
 
 //AUTHOR:VuHSO
 //                           _
@@ -27,10 +26,12 @@ import java.util.Date;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
-@Getter
-@Setter
-public class AttendanceCreateForm {
+@AllArgsConstructor
+public class EmploeeIdExistsValidator implements ConstraintValidator<EmployeeIdExists, Long> {
+    private final EmployeeRepository employeeRepository;
 
-    private Date checkinTime;
-    private Date checkoutTime;
+    @Override
+    public boolean isValid(Long id, ConstraintValidatorContext constraintValidatorContext) {
+        return employeeRepository.existsById(id);
+    }
 }

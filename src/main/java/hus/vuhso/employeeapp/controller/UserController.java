@@ -1,8 +1,9 @@
 package hus.vuhso.employeeapp.controller;
 
-import hus.vuhso.employeeapp.dto.UserDto;
-import hus.vuhso.employeeapp.form.UserCreateForm;
+import hus.vuhso.employeeapp.dto.response.UserDto;
+import hus.vuhso.employeeapp.dto.request.UserCreateForm;
 import hus.vuhso.employeeapp.service.UserService;
+import hus.vuhso.employeeapp.utils.RequestMappingUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,21 +30,21 @@ import org.springframework.web.bind.annotation.*;
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping(RequestMappingUtils.USER)
 @AllArgsConstructor
 public class UserController {
     private final UserService userService;
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create")
+    @PostMapping(RequestMappingUtils.CREATE)
     public UserDto createUser(UserCreateForm form) {
         return userService.createUser(form);
     }
-    @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
+    @DeleteMapping(RequestMappingUtils.DELETE_BY_ID)
+    public void deleteUser(@PathVariable(RequestMappingUtils.ID) Long id) {
         userService.deleteUser(id);
     }
-    @GetMapping("/find/{username}")
-    public UserDto findByUsername(@PathVariable("username") String username) {
+    @GetMapping(RequestMappingUtils.FIND_BY_USERNAME)
+    public UserDto findByUsername(@PathVariable(RequestMappingUtils.USERNAME) String username) {
         return userService.findByUsername(username);
     }
 }

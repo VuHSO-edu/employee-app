@@ -1,6 +1,5 @@
 package hus.vuhso.employeeapp.repository;
 
-import hus.vuhso.employeeapp.dto.UserDto;
 import hus.vuhso.employeeapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

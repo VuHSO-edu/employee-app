@@ -1,7 +1,8 @@
 package hus.vuhso.employeeapp.service;
 
-import hus.vuhso.employeeapp.dto.UserDto;
-import hus.vuhso.employeeapp.form.UserCreateForm;
+import hus.vuhso.employeeapp.dto.response.UserDto;
+import hus.vuhso.employeeapp.dto.request.UserCreateForm;
+import org.springframework.security.core.userdetails.UserDetails;
 
 //AUTHOR:VuHSO
 //                           _

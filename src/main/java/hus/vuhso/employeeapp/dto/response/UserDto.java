@@ -1,5 +1,6 @@
-package hus.vuhso.employeeapp.form;
+package hus.vuhso.employeeapp.dto.response;
 
+import hus.vuhso.employeeapp.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +27,9 @@ import lombok.Setter;
 //=========== Phật phù hộ không bao giờ BUG ===================
 @Getter
 @Setter
-public class UserCreateForm {
+public class UserDto {
+    private Long id;
     private String username;
     private String password;
+    private Employee employee;
 }
